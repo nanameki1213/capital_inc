@@ -14,7 +14,7 @@
 
 ## 絶対に守ること
 
-- 上の3つのドキュメント（game-design / architecture / coding-rules）と `packages/sim-core/contracts/` は、**オーナーの承認なしに変更しない**。変更したいときはissueで提案する。
+- 上の3つのドキュメント（game-design / architecture / coding-rules） は、**オーナーの承認なしに変更しない**。変更したいときはissueで提案する。
 - `status:approved` ラベルは、オーナーだけが付ける。
 - 設計issueが承認されるまで、実装に入らない。
 - 判断できないことは、勝手に決めずにオーナーに聞く。
