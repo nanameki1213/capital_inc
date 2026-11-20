@@ -17,7 +17,7 @@
 ## 2. 状態とデータ
 
 - `GameState` に、クラスのインスタンス、関数、`Map`、`Set`、`Date` を入れない。
-- バランスに関わる数値（原価、価格、家賃、客の好み、成長の天井など）は、コードに直書きせず `content/` のデータに置く。
+- バランスに関わる数値（原価、価格、家賃、客の好み、成長の天井など）は、コードに直書きせず `packages/content` のデータに置く。
 - ゲーム内に表示するテキストはコードに直書きせず、まとめて管理する。
 
 ## 3. お金と数値
@@ -28,18 +28,18 @@
 ## 4. 乱数と時間
 
 - 乱数は必ずシード付きのものを `ctx` 経由で使う。`Math.random()` は使用禁止。
-- `sim-core` の中で `Date.now()` などの実時間を使わない。
+- `Date.now()` などの実時間を扱ってよいのは `packages/app` だけ。`packages/domain`、`packages/application`、`packages/adapters` では使わない（`docs/architecture.md` 5.4）。
 
 ## 5. 純粋性
 
-- `sim-core` の関数は、引数の状態を直接書き換えない（新しい状態を返す）。
-- `sim-core` から、ネットワーク、ストレージ、DOMなどの外部に触れない。
+- `packages/domain` の関数は、引数の状態を直接書き換えない（新しい状態を返す）。
+- `packages/domain` から、ネットワーク、ストレージ、DOMなどの外部に触れない。
 
 ## 6. 非同期
 
-- `ui` で非同期処理を使うときは、Promiseを放置しない（`await` するか、エラー処理を付ける）。
+- `packages/app` で非同期処理を使うときは、Promiseを放置しない（`await` するか、エラー処理を付ける）。
 - ESLint の `no-floating-promises` を有効にする。
-- `sim-core` には非同期処理を入れない。
+- `packages/domain` には非同期処理を入れない。`packages/application` の `tick` と `advance` も同期処理にする（非同期はポートを使う処理だけ：`docs/architecture.md` 5.2）。
 
 ## 7. テスト
 

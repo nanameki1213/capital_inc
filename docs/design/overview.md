@@ -676,6 +676,6 @@
 26. `docs/game-design.md` 5.1 に「3点セット」とあるが、挙がっているのは2点。issue テンプレートには「ゲーム内の名前」があるので、この文書では「現実の手法 / ゲーム内の名前 / 効果の一行説明」の3点として扱った。
 27. `docs/game-design.md` 5.2 の冒頭に「現在検討中」とある。この文書は、いま書かれている内容を前提にした。
 28. `docs/game-design.md` 3章の C層の「意識すること」が「チュートリアル」だけになっている。この文書では、用語の言い換えと見える化も C層として扱った。
-29. （解決）`CLAUDE.md` から contracts の場所の記述が外れた（2026-11-20）。残りは、`docs/coding-rules.md` に `sim-core`、`content/` という、architecture と違う名前が出てくること。
+29. （解決）`CLAUDE.md` から contracts の場所の記述が外れ、`docs/coding-rules.md` のパッケージ名も architecture に合わせた（2026-11-20）。
 30. （解決）`docs/coding_rules.md` は `docs/coding-rules.md` に改名された（2026-11-20）。
 31. `docs/architecture.md` 8.2 に「詳細設計のテンプレートは CLAUDE.md を参照」とあるが、CLAUDE.md にあるのは設計 issue のテンプレートへの案内のみ。
