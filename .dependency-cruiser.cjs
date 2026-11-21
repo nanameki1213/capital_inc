@@ -64,7 +64,8 @@ module.exports = {
   ],
   options: {
     doNotFollow: { path: "node_modules" },
-    exclude: { path: "(^|/)node_modules/" },
+    // テストは vitest を import するので、境界チェックの対象から外す。
+    exclude: { path: ["(^|/)node_modules/", "\\.test\\.ts$"] },
     tsPreCompilationDeps: true,
     tsConfig: { fileName: "tsconfig.base.json" },
     enhancedResolveOptions: {
