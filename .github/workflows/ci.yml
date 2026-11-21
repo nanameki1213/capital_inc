@@ -1,0 +1,38 @@
+# 型チェック、lint、境界チェック、テストを、main への push と PR のたびに動かす（2026-11-21 判断 A3）。
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      # pnpm の版は package.json の packageManager から読む。
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: 型チェック
+        run: pnpm typecheck
+      - name: lint
+        run: pnpm lint
+      - name: 整形
+        run: pnpm format:check
+      - name: 境界チェック
+        run: pnpm depcruise
+      - name: テスト
+        run: pnpm test
