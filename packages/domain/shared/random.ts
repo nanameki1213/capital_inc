@@ -28,7 +28,7 @@ export function createRng(seed: number): RngState {
 /** 0 以上 1 未満の数を1つ引く。 */
 export function nextFloat(rng: RngState): Drawn<number> {
   const next = toState(rng + 0x6d2b79f5);
-  let t = next;
+  let t: number = next;
   t = Math.imul(t ^ (t >>> 15), t | 1);
   t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
   const value = ((t ^ (t >>> 14)) >>> 0) / 4294967296;
