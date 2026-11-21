@@ -1,0 +1,16 @@
+{
+  "name": "@capital-inc/app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@capital-inc/adapters": "workspace:*",
+    "@capital-inc/application": "workspace:*"
+  }
+}
