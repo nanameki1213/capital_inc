@@ -57,5 +57,12 @@ export default tseslint.config(
     files: ["*.js", "*.mjs", "*.cjs"],
     ...tseslint.configs.disableTypeChecked,
   },
+  {
+    files: ["*.cjs"],
+    languageOptions: {
+      sourceType: "commonjs",
+      globals: { module: "writable", require: "readonly" },
+    },
+  },
   prettier,
 );
